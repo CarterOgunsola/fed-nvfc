@@ -27751,14 +27751,14 @@
       const outerCurve = logo.children[0];
       const innerCurve = logo.children[1];
       const nvfcMaterial = new MeshPhysicalMaterial({
-        color: 9412027,
+        color: 6715549,
         metalness: 0.1,
         roughness: 0.15,
         transmission: 0.8,
         ior: 1.5,
         reflectivity: 0.2,
         thickness: 0.6,
-        opacity: 0.7,
+        opacity: 0.85,
         envMapIntensity: 0.6,
         clearcoat: 1,
         clearcoatRoughness: 0.3,
