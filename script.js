@@ -27759,7 +27759,7 @@
         reflectivity: 0.2,
         thickness: 0.6,
         opacity: 0.7,
-        envMapIntensity: 1,
+        envMapIntensity: 0.6,
         clearcoat: 1,
         clearcoatRoughness: 0.3,
         normalScale: 0.4,
