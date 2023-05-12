@@ -1105,10 +1105,10 @@
       return p + (q - p) * 6 * (2 / 3 - t);
     return p;
   }
-  function toComponents(source, target) {
-    target.r = source.r;
-    target.g = source.g;
-    target.b = source.b;
+  function toComponents(source2, target) {
+    target.r = source2.r;
+    target.g = source2.g;
+    target.b = source2.b;
     return target;
   }
   var Color = class {
@@ -1595,31 +1595,31 @@
     clone() {
       return new this.constructor().copy(this);
     }
-    copy(source) {
-      this.name = source.name;
-      this.source = source.source;
-      this.mipmaps = source.mipmaps.slice(0);
-      this.mapping = source.mapping;
-      this.wrapS = source.wrapS;
-      this.wrapT = source.wrapT;
-      this.magFilter = source.magFilter;
-      this.minFilter = source.minFilter;
-      this.anisotropy = source.anisotropy;
-      this.format = source.format;
-      this.internalFormat = source.internalFormat;
-      this.type = source.type;
-      this.offset.copy(source.offset);
-      this.repeat.copy(source.repeat);
-      this.center.copy(source.center);
-      this.rotation = source.rotation;
-      this.matrixAutoUpdate = source.matrixAutoUpdate;
-      this.matrix.copy(source.matrix);
-      this.generateMipmaps = source.generateMipmaps;
-      this.premultiplyAlpha = source.premultiplyAlpha;
-      this.flipY = source.flipY;
-      this.unpackAlignment = source.unpackAlignment;
-      this.encoding = source.encoding;
-      this.userData = JSON.parse(JSON.stringify(source.userData));
+    copy(source2) {
+      this.name = source2.name;
+      this.source = source2.source;
+      this.mipmaps = source2.mipmaps.slice(0);
+      this.mapping = source2.mapping;
+      this.wrapS = source2.wrapS;
+      this.wrapT = source2.wrapT;
+      this.magFilter = source2.magFilter;
+      this.minFilter = source2.minFilter;
+      this.anisotropy = source2.anisotropy;
+      this.format = source2.format;
+      this.internalFormat = source2.internalFormat;
+      this.type = source2.type;
+      this.offset.copy(source2.offset);
+      this.repeat.copy(source2.repeat);
+      this.center.copy(source2.center);
+      this.rotation = source2.rotation;
+      this.matrixAutoUpdate = source2.matrixAutoUpdate;
+      this.matrix.copy(source2.matrix);
+      this.generateMipmaps = source2.generateMipmaps;
+      this.premultiplyAlpha = source2.premultiplyAlpha;
+      this.flipY = source2.flipY;
+      this.unpackAlignment = source2.unpackAlignment;
+      this.encoding = source2.encoding;
+      this.userData = JSON.parse(JSON.stringify(source2.userData));
       this.needsUpdate = true;
       return this;
     }
@@ -2132,20 +2132,20 @@
     clone() {
       return new this.constructor().copy(this);
     }
-    copy(source) {
-      this.width = source.width;
-      this.height = source.height;
-      this.depth = source.depth;
-      this.viewport.copy(source.viewport);
-      this.texture = source.texture.clone();
+    copy(source2) {
+      this.width = source2.width;
+      this.height = source2.height;
+      this.depth = source2.depth;
+      this.viewport.copy(source2.viewport);
+      this.texture = source2.texture.clone();
       this.texture.isRenderTargetTexture = true;
-      const image = Object.assign({}, source.texture.image);
+      const image = Object.assign({}, source2.texture.image);
       this.texture.source = new Source(image);
-      this.depthBuffer = source.depthBuffer;
-      this.stencilBuffer = source.stencilBuffer;
-      if (source.depthTexture !== null)
-        this.depthTexture = source.depthTexture.clone();
-      this.samples = source.samples;
+      this.depthBuffer = source2.depthBuffer;
+      this.stencilBuffer = source2.stencilBuffer;
+      if (source2.depthTexture !== null)
+        this.depthTexture = source2.depthTexture.clone();
+      this.samples = source2.samples;
       return this;
     }
     dispose() {
@@ -5130,28 +5130,28 @@
     clone(recursive) {
       return new this.constructor().copy(this, recursive);
     }
-    copy(source, recursive = true) {
-      this.name = source.name;
-      this.up.copy(source.up);
-      this.position.copy(source.position);
-      this.rotation.order = source.rotation.order;
-      this.quaternion.copy(source.quaternion);
-      this.scale.copy(source.scale);
-      this.matrix.copy(source.matrix);
-      this.matrixWorld.copy(source.matrixWorld);
-      this.matrixAutoUpdate = source.matrixAutoUpdate;
-      this.matrixWorldNeedsUpdate = source.matrixWorldNeedsUpdate;
-      this.matrixWorldAutoUpdate = source.matrixWorldAutoUpdate;
-      this.layers.mask = source.layers.mask;
-      this.visible = source.visible;
-      this.castShadow = source.castShadow;
-      this.receiveShadow = source.receiveShadow;
-      this.frustumCulled = source.frustumCulled;
-      this.renderOrder = source.renderOrder;
-      this.userData = JSON.parse(JSON.stringify(source.userData));
+    copy(source2, recursive = true) {
+      this.name = source2.name;
+      this.up.copy(source2.up);
+      this.position.copy(source2.position);
+      this.rotation.order = source2.rotation.order;
+      this.quaternion.copy(source2.quaternion);
+      this.scale.copy(source2.scale);
+      this.matrix.copy(source2.matrix);
+      this.matrixWorld.copy(source2.matrixWorld);
+      this.matrixAutoUpdate = source2.matrixAutoUpdate;
+      this.matrixWorldNeedsUpdate = source2.matrixWorldNeedsUpdate;
+      this.matrixWorldAutoUpdate = source2.matrixWorldAutoUpdate;
+      this.layers.mask = source2.layers.mask;
+      this.visible = source2.visible;
+      this.castShadow = source2.castShadow;
+      this.receiveShadow = source2.receiveShadow;
+      this.frustumCulled = source2.frustumCulled;
+      this.renderOrder = source2.renderOrder;
+      this.userData = JSON.parse(JSON.stringify(source2.userData));
       if (recursive === true) {
-        for (let i = 0; i < source.children.length; i++) {
-          const child = source.children[i];
+        for (let i = 0; i < source2.children.length; i++) {
+          const child = source2.children[i];
           this.add(child.clone());
         }
       }
@@ -5643,31 +5643,31 @@
     clone() {
       return new this.constructor().copy(this);
     }
-    copy(source) {
-      this.name = source.name;
-      this.blending = source.blending;
-      this.side = source.side;
-      this.vertexColors = source.vertexColors;
-      this.opacity = source.opacity;
-      this.transparent = source.transparent;
-      this.blendSrc = source.blendSrc;
-      this.blendDst = source.blendDst;
-      this.blendEquation = source.blendEquation;
-      this.blendSrcAlpha = source.blendSrcAlpha;
-      this.blendDstAlpha = source.blendDstAlpha;
-      this.blendEquationAlpha = source.blendEquationAlpha;
-      this.depthFunc = source.depthFunc;
-      this.depthTest = source.depthTest;
-      this.depthWrite = source.depthWrite;
-      this.stencilWriteMask = source.stencilWriteMask;
-      this.stencilFunc = source.stencilFunc;
-      this.stencilRef = source.stencilRef;
-      this.stencilFuncMask = source.stencilFuncMask;
-      this.stencilFail = source.stencilFail;
-      this.stencilZFail = source.stencilZFail;
-      this.stencilZPass = source.stencilZPass;
-      this.stencilWrite = source.stencilWrite;
-      const srcPlanes = source.clippingPlanes;
+    copy(source2) {
+      this.name = source2.name;
+      this.blending = source2.blending;
+      this.side = source2.side;
+      this.vertexColors = source2.vertexColors;
+      this.opacity = source2.opacity;
+      this.transparent = source2.transparent;
+      this.blendSrc = source2.blendSrc;
+      this.blendDst = source2.blendDst;
+      this.blendEquation = source2.blendEquation;
+      this.blendSrcAlpha = source2.blendSrcAlpha;
+      this.blendDstAlpha = source2.blendDstAlpha;
+      this.blendEquationAlpha = source2.blendEquationAlpha;
+      this.depthFunc = source2.depthFunc;
+      this.depthTest = source2.depthTest;
+      this.depthWrite = source2.depthWrite;
+      this.stencilWriteMask = source2.stencilWriteMask;
+      this.stencilFunc = source2.stencilFunc;
+      this.stencilRef = source2.stencilRef;
+      this.stencilFuncMask = source2.stencilFuncMask;
+      this.stencilFail = source2.stencilFail;
+      this.stencilZFail = source2.stencilZFail;
+      this.stencilZPass = source2.stencilZPass;
+      this.stencilWrite = source2.stencilWrite;
+      const srcPlanes = source2.clippingPlanes;
       let dstPlanes = null;
       if (srcPlanes !== null) {
         const n = srcPlanes.length;
@@ -5677,21 +5677,21 @@
         }
       }
       this.clippingPlanes = dstPlanes;
-      this.clipIntersection = source.clipIntersection;
-      this.clipShadows = source.clipShadows;
-      this.shadowSide = source.shadowSide;
-      this.colorWrite = source.colorWrite;
-      this.precision = source.precision;
-      this.polygonOffset = source.polygonOffset;
-      this.polygonOffsetFactor = source.polygonOffsetFactor;
-      this.polygonOffsetUnits = source.polygonOffsetUnits;
-      this.dithering = source.dithering;
-      this.alphaTest = source.alphaTest;
-      this.alphaToCoverage = source.alphaToCoverage;
-      this.premultipliedAlpha = source.premultipliedAlpha;
-      this.visible = source.visible;
-      this.toneMapped = source.toneMapped;
-      this.userData = JSON.parse(JSON.stringify(source.userData));
+      this.clipIntersection = source2.clipIntersection;
+      this.clipShadows = source2.clipShadows;
+      this.shadowSide = source2.shadowSide;
+      this.colorWrite = source2.colorWrite;
+      this.precision = source2.precision;
+      this.polygonOffset = source2.polygonOffset;
+      this.polygonOffsetFactor = source2.polygonOffsetFactor;
+      this.polygonOffsetUnits = source2.polygonOffsetUnits;
+      this.dithering = source2.dithering;
+      this.alphaTest = source2.alphaTest;
+      this.alphaToCoverage = source2.alphaToCoverage;
+      this.premultipliedAlpha = source2.premultipliedAlpha;
+      this.visible = source2.visible;
+      this.toneMapped = source2.toneMapped;
+      this.userData = JSON.parse(JSON.stringify(source2.userData));
       return this;
     }
     dispose() {
@@ -5726,25 +5726,25 @@
       this.fog = true;
       this.setValues(parameters);
     }
-    copy(source) {
-      super.copy(source);
-      this.color.copy(source.color);
-      this.map = source.map;
-      this.lightMap = source.lightMap;
-      this.lightMapIntensity = source.lightMapIntensity;
-      this.aoMap = source.aoMap;
-      this.aoMapIntensity = source.aoMapIntensity;
-      this.specularMap = source.specularMap;
-      this.alphaMap = source.alphaMap;
-      this.envMap = source.envMap;
-      this.combine = source.combine;
-      this.reflectivity = source.reflectivity;
-      this.refractionRatio = source.refractionRatio;
-      this.wireframe = source.wireframe;
-      this.wireframeLinewidth = source.wireframeLinewidth;
-      this.wireframeLinecap = source.wireframeLinecap;
-      this.wireframeLinejoin = source.wireframeLinejoin;
-      this.fog = source.fog;
+    copy(source2) {
+      super.copy(source2);
+      this.color.copy(source2.color);
+      this.map = source2.map;
+      this.lightMap = source2.lightMap;
+      this.lightMapIntensity = source2.lightMapIntensity;
+      this.aoMap = source2.aoMap;
+      this.aoMapIntensity = source2.aoMapIntensity;
+      this.specularMap = source2.specularMap;
+      this.alphaMap = source2.alphaMap;
+      this.envMap = source2.envMap;
+      this.combine = source2.combine;
+      this.reflectivity = source2.reflectivity;
+      this.refractionRatio = source2.refractionRatio;
+      this.wireframe = source2.wireframe;
+      this.wireframeLinewidth = source2.wireframeLinewidth;
+      this.wireframeLinecap = source2.wireframeLinecap;
+      this.wireframeLinejoin = source2.wireframeLinejoin;
+      this.fog = source2.fog;
       return this;
     }
   };
@@ -5775,13 +5775,13 @@
       this.usage = value;
       return this;
     }
-    copy(source) {
-      this.name = source.name;
-      this.array = new source.array.constructor(source.array);
-      this.itemSize = source.itemSize;
-      this.count = source.count;
-      this.normalized = source.normalized;
-      this.usage = source.usage;
+    copy(source2) {
+      this.name = source2.name;
+      this.array = new source2.array.constructor(source2.array);
+      this.itemSize = source2.itemSize;
+      this.count = source2.count;
+      this.normalized = source2.normalized;
+      this.usage = source2.usage;
       return this;
     }
     copyAt(index1, attribute, index2) {
@@ -6483,7 +6483,7 @@
     clone() {
       return new this.constructor().copy(this);
     }
-    copy(source) {
+    copy(source2) {
       this.index = null;
       this.attributes = {};
       this.morphAttributes = {};
@@ -6491,17 +6491,17 @@
       this.boundingBox = null;
       this.boundingSphere = null;
       const data = {};
-      this.name = source.name;
-      const index = source.index;
+      this.name = source2.name;
+      const index = source2.index;
       if (index !== null) {
         this.setIndex(index.clone(data));
       }
-      const attributes = source.attributes;
+      const attributes = source2.attributes;
       for (const name in attributes) {
         const attribute = attributes[name];
         this.setAttribute(name, attribute.clone(data));
       }
-      const morphAttributes = source.morphAttributes;
+      const morphAttributes = source2.morphAttributes;
       for (const name in morphAttributes) {
         const array = [];
         const morphAttribute = morphAttributes[name];
@@ -6510,25 +6510,25 @@
         }
         this.morphAttributes[name] = array;
       }
-      this.morphTargetsRelative = source.morphTargetsRelative;
-      const groups = source.groups;
+      this.morphTargetsRelative = source2.morphTargetsRelative;
+      const groups = source2.groups;
       for (let i = 0, l = groups.length; i < l; i++) {
         const group = groups[i];
         this.addGroup(group.start, group.count, group.materialIndex);
       }
-      const boundingBox = source.boundingBox;
+      const boundingBox = source2.boundingBox;
       if (boundingBox !== null) {
         this.boundingBox = boundingBox.clone();
       }
-      const boundingSphere = source.boundingSphere;
+      const boundingSphere = source2.boundingSphere;
       if (boundingSphere !== null) {
         this.boundingSphere = boundingSphere.clone();
       }
-      this.drawRange.start = source.drawRange.start;
-      this.drawRange.count = source.drawRange.count;
-      this.userData = source.userData;
-      if (source.parameters !== void 0)
-        this.parameters = Object.assign({}, source.parameters);
+      this.drawRange.start = source2.drawRange.start;
+      this.drawRange.count = source2.drawRange.count;
+      this.userData = source2.userData;
+      if (source2.parameters !== void 0)
+        this.parameters = Object.assign({}, source2.parameters);
       return this;
     }
     dispose() {
@@ -6557,16 +6557,16 @@
       this.material = material;
       this.updateMorphTargets();
     }
-    copy(source, recursive) {
-      super.copy(source, recursive);
-      if (source.morphTargetInfluences !== void 0) {
-        this.morphTargetInfluences = source.morphTargetInfluences.slice();
+    copy(source2, recursive) {
+      super.copy(source2, recursive);
+      if (source2.morphTargetInfluences !== void 0) {
+        this.morphTargetInfluences = source2.morphTargetInfluences.slice();
       }
-      if (source.morphTargetDictionary !== void 0) {
-        this.morphTargetDictionary = Object.assign({}, source.morphTargetDictionary);
+      if (source2.morphTargetDictionary !== void 0) {
+        this.morphTargetDictionary = Object.assign({}, source2.morphTargetDictionary);
       }
-      this.material = source.material;
-      this.geometry = source.geometry;
+      this.material = source2.material;
+      this.geometry = source2.geometry;
       return this;
     }
     updateMorphTargets() {
@@ -6915,20 +6915,20 @@
         this.setValues(parameters);
       }
     }
-    copy(source) {
-      super.copy(source);
-      this.fragmentShader = source.fragmentShader;
-      this.vertexShader = source.vertexShader;
-      this.uniforms = cloneUniforms(source.uniforms);
-      this.uniformsGroups = cloneUniformsGroups(source.uniformsGroups);
-      this.defines = Object.assign({}, source.defines);
-      this.wireframe = source.wireframe;
-      this.wireframeLinewidth = source.wireframeLinewidth;
-      this.fog = source.fog;
-      this.lights = source.lights;
-      this.clipping = source.clipping;
-      this.extensions = Object.assign({}, source.extensions);
-      this.glslVersion = source.glslVersion;
+    copy(source2) {
+      super.copy(source2);
+      this.fragmentShader = source2.fragmentShader;
+      this.vertexShader = source2.vertexShader;
+      this.uniforms = cloneUniforms(source2.uniforms);
+      this.uniformsGroups = cloneUniformsGroups(source2.uniformsGroups);
+      this.defines = Object.assign({}, source2.defines);
+      this.wireframe = source2.wireframe;
+      this.wireframeLinewidth = source2.wireframeLinewidth;
+      this.fog = source2.fog;
+      this.lights = source2.lights;
+      this.clipping = source2.clipping;
+      this.extensions = Object.assign({}, source2.extensions);
+      this.glslVersion = source2.glslVersion;
       return this;
     }
     toJSON(meta) {
@@ -7002,11 +7002,11 @@
       this.projectionMatrix = new Matrix4();
       this.projectionMatrixInverse = new Matrix4();
     }
-    copy(source, recursive) {
-      super.copy(source, recursive);
-      this.matrixWorldInverse.copy(source.matrixWorldInverse);
-      this.projectionMatrix.copy(source.projectionMatrix);
-      this.projectionMatrixInverse.copy(source.projectionMatrixInverse);
+    copy(source2, recursive) {
+      super.copy(source2, recursive);
+      this.matrixWorldInverse.copy(source2.matrixWorldInverse);
+      this.projectionMatrix.copy(source2.projectionMatrix);
+      this.projectionMatrixInverse.copy(source2.projectionMatrixInverse);
       return this;
     }
     getWorldDirection(target) {
@@ -7042,17 +7042,17 @@
       this.filmOffset = 0;
       this.updateProjectionMatrix();
     }
-    copy(source, recursive) {
-      super.copy(source, recursive);
-      this.fov = source.fov;
-      this.zoom = source.zoom;
-      this.near = source.near;
-      this.far = source.far;
-      this.focus = source.focus;
-      this.aspect = source.aspect;
-      this.view = source.view === null ? null : Object.assign({}, source.view);
-      this.filmGauge = source.filmGauge;
-      this.filmOffset = source.filmOffset;
+    copy(source2, recursive) {
+      super.copy(source2, recursive);
+      this.fov = source2.fov;
+      this.zoom = source2.zoom;
+      this.near = source2.near;
+      this.far = source2.far;
+      this.focus = source2.focus;
+      this.aspect = source2.aspect;
+      this.view = source2.view === null ? null : Object.assign({}, source2.view);
+      this.filmGauge = source2.filmGauge;
+      this.filmOffset = source2.filmOffset;
       return this;
     }
     setFocalLength(focalLength) {
@@ -9121,16 +9121,16 @@
       this.far = far;
       this.updateProjectionMatrix();
     }
-    copy(source, recursive) {
-      super.copy(source, recursive);
-      this.left = source.left;
-      this.right = source.right;
-      this.top = source.top;
-      this.bottom = source.bottom;
-      this.near = source.near;
-      this.far = source.far;
-      this.zoom = source.zoom;
-      this.view = source.view === null ? null : Object.assign({}, source.view);
+    copy(source2, recursive) {
+      super.copy(source2, recursive);
+      this.left = source2.left;
+      this.right = source2.right;
+      this.top = source2.top;
+      this.bottom = source2.bottom;
+      this.near = source2.near;
+      this.far = source2.far;
+      this.zoom = source2.zoom;
+      this.view = source2.view === null ? null : Object.assign({}, source2.view);
       return this;
     }
     setViewOffset(fullWidth, fullHeight, x, y, width, height) {
@@ -12489,16 +12489,16 @@
       this.wireframeLinewidth = 1;
       this.setValues(parameters);
     }
-    copy(source) {
-      super.copy(source);
-      this.depthPacking = source.depthPacking;
-      this.map = source.map;
-      this.alphaMap = source.alphaMap;
-      this.displacementMap = source.displacementMap;
-      this.displacementScale = source.displacementScale;
-      this.displacementBias = source.displacementBias;
-      this.wireframe = source.wireframe;
-      this.wireframeLinewidth = source.wireframeLinewidth;
+    copy(source2) {
+      super.copy(source2);
+      this.depthPacking = source2.depthPacking;
+      this.map = source2.map;
+      this.alphaMap = source2.alphaMap;
+      this.displacementMap = source2.displacementMap;
+      this.displacementScale = source2.displacementScale;
+      this.displacementBias = source2.displacementBias;
+      this.wireframe = source2.wireframe;
+      this.wireframeLinewidth = source2.wireframeLinewidth;
       return this;
     }
   };
@@ -12517,16 +12517,16 @@
       this.displacementBias = 0;
       this.setValues(parameters);
     }
-    copy(source) {
-      super.copy(source);
-      this.referencePosition.copy(source.referencePosition);
-      this.nearDistance = source.nearDistance;
-      this.farDistance = source.farDistance;
-      this.map = source.map;
-      this.alphaMap = source.alphaMap;
-      this.displacementMap = source.displacementMap;
-      this.displacementScale = source.displacementScale;
-      this.displacementBias = source.displacementBias;
+    copy(source2) {
+      super.copy(source2);
+      this.referencePosition.copy(source2.referencePosition);
+      this.nearDistance = source2.nearDistance;
+      this.farDistance = source2.farDistance;
+      this.map = source2.map;
+      this.alphaMap = source2.alphaMap;
+      this.displacementMap = source2.displacementMap;
+      this.displacementScale = source2.displacementScale;
+      this.displacementBias = source2.displacementBias;
       return this;
     }
   };
@@ -13604,8 +13604,8 @@
       const textureProperties = properties.get(texture);
       if (textureProperties.__webglInit === void 0)
         return;
-      const source = texture.source;
-      const webglTextures = _sources.get(source);
+      const source2 = texture.source;
+      const webglTextures = _sources.get(source2);
       if (webglTextures) {
         const webglTexture = webglTextures[textureProperties.__cacheKey];
         webglTexture.usedTimes--;
@@ -13613,7 +13613,7 @@
           deleteTexture(texture);
         }
         if (Object.keys(webglTextures).length === 0) {
-          _sources.delete(source);
+          _sources.delete(source2);
         }
       }
       properties.remove(texture);
@@ -13621,8 +13621,8 @@
     function deleteTexture(texture) {
       const textureProperties = properties.get(texture);
       _gl.deleteTexture(textureProperties.__webglTexture);
-      const source = texture.source;
-      const webglTextures = _sources.get(source);
+      const source2 = texture.source;
+      const webglTextures = _sources.get(source2);
       delete webglTextures[textureProperties.__cacheKey];
       info.memory.textures--;
     }
@@ -13801,11 +13801,11 @@
         textureProperties.__webglInit = true;
         texture.addEventListener("dispose", onTextureDispose);
       }
-      const source = texture.source;
-      let webglTextures = _sources.get(source);
+      const source2 = texture.source;
+      let webglTextures = _sources.get(source2);
       if (webglTextures === void 0) {
         webglTextures = {};
-        _sources.set(source, webglTextures);
+        _sources.set(source2, webglTextures);
       }
       const textureCacheKey = getTextureCacheKey(texture);
       if (textureCacheKey !== textureProperties.__cacheKey) {
@@ -13837,10 +13837,10 @@
       if (texture.isData3DTexture)
         textureType = 32879;
       const forceUpload = initTexture(textureProperties, texture);
-      const source = texture.source;
+      const source2 = texture.source;
       state.bindTexture(textureType, textureProperties.__webglTexture, 33984 + slot);
-      const sourceProperties = properties.get(source);
-      if (source.version !== sourceProperties.__version || forceUpload === true) {
+      const sourceProperties = properties.get(source2);
+      if (source2.version !== sourceProperties.__version || forceUpload === true) {
         state.activeTexture(33984 + slot);
         _gl.pixelStorei(37440, texture.flipY);
         _gl.pixelStorei(37441, texture.premultiplyAlpha);
@@ -14029,7 +14029,7 @@
         if (textureNeedsGenerateMipmaps(texture, supportsMips)) {
           generateMipmap(textureType);
         }
-        sourceProperties.__version = source.version;
+        sourceProperties.__version = source2.version;
         if (texture.onUpdate)
           texture.onUpdate(texture);
       }
@@ -14039,10 +14039,10 @@
       if (texture.image.length !== 6)
         return;
       const forceUpload = initTexture(textureProperties, texture);
-      const source = texture.source;
+      const source2 = texture.source;
       state.bindTexture(34067, textureProperties.__webglTexture, 33984 + slot);
-      const sourceProperties = properties.get(source);
-      if (source.version !== sourceProperties.__version || forceUpload === true) {
+      const sourceProperties = properties.get(source2);
+      if (source2.version !== sourceProperties.__version || forceUpload === true) {
         state.activeTexture(33984 + slot);
         _gl.pixelStorei(37440, texture.flipY);
         _gl.pixelStorei(37441, texture.premultiplyAlpha);
@@ -14135,7 +14135,7 @@
         if (textureNeedsGenerateMipmaps(texture, supportsMips)) {
           generateMipmap(34067);
         }
-        sourceProperties.__version = source.version;
+        sourceProperties.__version = source2.version;
         if (texture.onUpdate)
           texture.onUpdate(texture);
       }
@@ -17104,19 +17104,19 @@
         __THREE_DEVTOOLS__.dispatchEvent(new CustomEvent("observe", { detail: this }));
       }
     }
-    copy(source, recursive) {
-      super.copy(source, recursive);
-      if (source.background !== null)
-        this.background = source.background.clone();
-      if (source.environment !== null)
-        this.environment = source.environment.clone();
-      if (source.fog !== null)
-        this.fog = source.fog.clone();
-      this.backgroundBlurriness = source.backgroundBlurriness;
-      this.backgroundIntensity = source.backgroundIntensity;
-      if (source.overrideMaterial !== null)
-        this.overrideMaterial = source.overrideMaterial.clone();
-      this.matrixAutoUpdate = source.matrixAutoUpdate;
+    copy(source2, recursive) {
+      super.copy(source2, recursive);
+      if (source2.background !== null)
+        this.background = source2.background.clone();
+      if (source2.environment !== null)
+        this.environment = source2.environment.clone();
+      if (source2.fog !== null)
+        this.fog = source2.fog.clone();
+      this.backgroundBlurriness = source2.backgroundBlurriness;
+      this.backgroundIntensity = source2.backgroundIntensity;
+      if (source2.overrideMaterial !== null)
+        this.overrideMaterial = source2.overrideMaterial.clone();
+      this.matrixAutoUpdate = source2.matrixAutoUpdate;
       return this;
     }
     toJSON(meta) {
@@ -17159,11 +17159,11 @@
       this.usage = value;
       return this;
     }
-    copy(source) {
-      this.array = new source.array.constructor(source.array);
-      this.count = source.count;
-      this.stride = source.stride;
-      this.usage = source.usage;
+    copy(source2) {
+      this.array = new source2.array.constructor(source2.array);
+      this.count = source2.count;
+      this.stride = source2.stride;
+      this.usage = source2.usage;
       return this;
     }
     copyAt(index1, attribute, index2) {
@@ -17410,12 +17410,12 @@
       this.bindMatrix = new Matrix4();
       this.bindMatrixInverse = new Matrix4();
     }
-    copy(source, recursive) {
-      super.copy(source, recursive);
-      this.bindMode = source.bindMode;
-      this.bindMatrix.copy(source.bindMatrix);
-      this.bindMatrixInverse.copy(source.bindMatrixInverse);
-      this.skeleton = source.skeleton;
+    copy(source2, recursive) {
+      super.copy(source2, recursive);
+      this.bindMode = source2.bindMode;
+      this.bindMatrix.copy(source2.bindMatrix);
+      this.bindMatrixInverse.copy(source2.bindMatrixInverse);
+      this.skeleton = source2.skeleton;
       return this;
     }
     bind(skeleton, bindMatrix) {
@@ -17637,9 +17637,9 @@
       this.isInstancedBufferAttribute = true;
       this.meshPerAttribute = meshPerAttribute;
     }
-    copy(source) {
-      super.copy(source);
-      this.meshPerAttribute = source.meshPerAttribute;
+    copy(source2) {
+      super.copy(source2);
+      this.meshPerAttribute = source2.meshPerAttribute;
       return this;
     }
     toJSON() {
@@ -17666,12 +17666,12 @@
         this.setMatrixAt(i, _identity);
       }
     }
-    copy(source, recursive) {
-      super.copy(source, recursive);
-      this.instanceMatrix.copy(source.instanceMatrix);
-      if (source.instanceColor !== null)
-        this.instanceColor = source.instanceColor.clone();
-      this.count = source.count;
+    copy(source2, recursive) {
+      super.copy(source2, recursive);
+      this.instanceMatrix.copy(source2.instanceMatrix);
+      if (source2.instanceColor !== null)
+        this.instanceColor = source2.instanceColor.clone();
+      this.count = source2.count;
       return this;
     }
     getColorAt(index, color) {
@@ -17728,13 +17728,13 @@
       this.fog = true;
       this.setValues(parameters);
     }
-    copy(source) {
-      super.copy(source);
-      this.color.copy(source.color);
-      this.linewidth = source.linewidth;
-      this.linecap = source.linecap;
-      this.linejoin = source.linejoin;
-      this.fog = source.fog;
+    copy(source2) {
+      super.copy(source2);
+      this.color.copy(source2.color);
+      this.linewidth = source2.linewidth;
+      this.linecap = source2.linecap;
+      this.linejoin = source2.linejoin;
+      this.fog = source2.fog;
       return this;
     }
   };
@@ -17752,10 +17752,10 @@
       this.material = material;
       this.updateMorphTargets();
     }
-    copy(source, recursive) {
-      super.copy(source, recursive);
-      this.material = source.material;
-      this.geometry = source.geometry;
+    copy(source2, recursive) {
+      super.copy(source2, recursive);
+      this.material = source2.material;
+      this.geometry = source2.geometry;
       return this;
     }
     computeLineDistances() {
@@ -17911,14 +17911,14 @@
       this.fog = true;
       this.setValues(parameters);
     }
-    copy(source) {
-      super.copy(source);
-      this.color.copy(source.color);
-      this.map = source.map;
-      this.alphaMap = source.alphaMap;
-      this.size = source.size;
-      this.sizeAttenuation = source.sizeAttenuation;
-      this.fog = source.fog;
+    copy(source2) {
+      super.copy(source2);
+      this.color.copy(source2.color);
+      this.map = source2.map;
+      this.alphaMap = source2.alphaMap;
+      this.size = source2.size;
+      this.sizeAttenuation = source2.sizeAttenuation;
+      this.fog = source2.fog;
       return this;
     }
   };
@@ -17935,10 +17935,10 @@
       this.material = material;
       this.updateMorphTargets();
     }
-    copy(source, recursive) {
-      super.copy(source, recursive);
-      this.material = source.material;
-      this.geometry = source.geometry;
+    copy(source2, recursive) {
+      super.copy(source2, recursive);
+      this.material = source2.material;
+      this.geometry = source2.geometry;
       return this;
     }
     raycast(raycaster, intersects) {
@@ -18052,39 +18052,39 @@
       this.fog = true;
       this.setValues(parameters);
     }
-    copy(source) {
-      super.copy(source);
+    copy(source2) {
+      super.copy(source2);
       this.defines = { "STANDARD": "" };
-      this.color.copy(source.color);
-      this.roughness = source.roughness;
-      this.metalness = source.metalness;
-      this.map = source.map;
-      this.lightMap = source.lightMap;
-      this.lightMapIntensity = source.lightMapIntensity;
-      this.aoMap = source.aoMap;
-      this.aoMapIntensity = source.aoMapIntensity;
-      this.emissive.copy(source.emissive);
-      this.emissiveMap = source.emissiveMap;
-      this.emissiveIntensity = source.emissiveIntensity;
-      this.bumpMap = source.bumpMap;
-      this.bumpScale = source.bumpScale;
-      this.normalMap = source.normalMap;
-      this.normalMapType = source.normalMapType;
-      this.normalScale.copy(source.normalScale);
-      this.displacementMap = source.displacementMap;
-      this.displacementScale = source.displacementScale;
-      this.displacementBias = source.displacementBias;
-      this.roughnessMap = source.roughnessMap;
-      this.metalnessMap = source.metalnessMap;
-      this.alphaMap = source.alphaMap;
-      this.envMap = source.envMap;
-      this.envMapIntensity = source.envMapIntensity;
-      this.wireframe = source.wireframe;
-      this.wireframeLinewidth = source.wireframeLinewidth;
-      this.wireframeLinecap = source.wireframeLinecap;
-      this.wireframeLinejoin = source.wireframeLinejoin;
-      this.flatShading = source.flatShading;
-      this.fog = source.fog;
+      this.color.copy(source2.color);
+      this.roughness = source2.roughness;
+      this.metalness = source2.metalness;
+      this.map = source2.map;
+      this.lightMap = source2.lightMap;
+      this.lightMapIntensity = source2.lightMapIntensity;
+      this.aoMap = source2.aoMap;
+      this.aoMapIntensity = source2.aoMapIntensity;
+      this.emissive.copy(source2.emissive);
+      this.emissiveMap = source2.emissiveMap;
+      this.emissiveIntensity = source2.emissiveIntensity;
+      this.bumpMap = source2.bumpMap;
+      this.bumpScale = source2.bumpScale;
+      this.normalMap = source2.normalMap;
+      this.normalMapType = source2.normalMapType;
+      this.normalScale.copy(source2.normalScale);
+      this.displacementMap = source2.displacementMap;
+      this.displacementScale = source2.displacementScale;
+      this.displacementBias = source2.displacementBias;
+      this.roughnessMap = source2.roughnessMap;
+      this.metalnessMap = source2.metalnessMap;
+      this.alphaMap = source2.alphaMap;
+      this.envMap = source2.envMap;
+      this.envMapIntensity = source2.envMapIntensity;
+      this.wireframe = source2.wireframe;
+      this.wireframeLinewidth = source2.wireframeLinewidth;
+      this.wireframeLinecap = source2.wireframeLinecap;
+      this.wireframeLinejoin = source2.wireframeLinejoin;
+      this.flatShading = source2.flatShading;
+      this.fog = source2.fog;
       return this;
     }
   };
@@ -18170,39 +18170,39 @@
       }
       this._transmission = value;
     }
-    copy(source) {
-      super.copy(source);
+    copy(source2) {
+      super.copy(source2);
       this.defines = {
         "STANDARD": "",
         "PHYSICAL": ""
       };
-      this.clearcoat = source.clearcoat;
-      this.clearcoatMap = source.clearcoatMap;
-      this.clearcoatRoughness = source.clearcoatRoughness;
-      this.clearcoatRoughnessMap = source.clearcoatRoughnessMap;
-      this.clearcoatNormalMap = source.clearcoatNormalMap;
-      this.clearcoatNormalScale.copy(source.clearcoatNormalScale);
-      this.ior = source.ior;
-      this.iridescence = source.iridescence;
-      this.iridescenceMap = source.iridescenceMap;
-      this.iridescenceIOR = source.iridescenceIOR;
-      this.iridescenceThicknessRange = [...source.iridescenceThicknessRange];
-      this.iridescenceThicknessMap = source.iridescenceThicknessMap;
-      this.sheen = source.sheen;
-      this.sheenColor.copy(source.sheenColor);
-      this.sheenColorMap = source.sheenColorMap;
-      this.sheenRoughness = source.sheenRoughness;
-      this.sheenRoughnessMap = source.sheenRoughnessMap;
-      this.transmission = source.transmission;
-      this.transmissionMap = source.transmissionMap;
-      this.thickness = source.thickness;
-      this.thicknessMap = source.thicknessMap;
-      this.attenuationDistance = source.attenuationDistance;
-      this.attenuationColor.copy(source.attenuationColor);
-      this.specularIntensity = source.specularIntensity;
-      this.specularIntensityMap = source.specularIntensityMap;
-      this.specularColor.copy(source.specularColor);
-      this.specularColorMap = source.specularColorMap;
+      this.clearcoat = source2.clearcoat;
+      this.clearcoatMap = source2.clearcoatMap;
+      this.clearcoatRoughness = source2.clearcoatRoughness;
+      this.clearcoatRoughnessMap = source2.clearcoatRoughnessMap;
+      this.clearcoatNormalMap = source2.clearcoatNormalMap;
+      this.clearcoatNormalScale.copy(source2.clearcoatNormalScale);
+      this.ior = source2.ior;
+      this.iridescence = source2.iridescence;
+      this.iridescenceMap = source2.iridescenceMap;
+      this.iridescenceIOR = source2.iridescenceIOR;
+      this.iridescenceThicknessRange = [...source2.iridescenceThicknessRange];
+      this.iridescenceThicknessMap = source2.iridescenceThicknessMap;
+      this.sheen = source2.sheen;
+      this.sheenColor.copy(source2.sheenColor);
+      this.sheenColorMap = source2.sheenColorMap;
+      this.sheenRoughness = source2.sheenRoughness;
+      this.sheenRoughnessMap = source2.sheenRoughnessMap;
+      this.transmission = source2.transmission;
+      this.transmissionMap = source2.transmissionMap;
+      this.thickness = source2.thickness;
+      this.thicknessMap = source2.thicknessMap;
+      this.attenuationDistance = source2.attenuationDistance;
+      this.attenuationColor.copy(source2.attenuationColor);
+      this.specularIntensity = source2.specularIntensity;
+      this.specularIntensityMap = source2.specularIntensityMap;
+      this.specularColor.copy(source2.specularColor);
+      this.specularColorMap = source2.specularColorMap;
       return this;
     }
   };
@@ -19377,10 +19377,10 @@
     }
     dispose() {
     }
-    copy(source, recursive) {
-      super.copy(source, recursive);
-      this.color.copy(source.color);
-      this.intensity = source.intensity;
+    copy(source2, recursive) {
+      super.copy(source2, recursive);
+      this.color.copy(source2.color);
+      this.intensity = source2.intensity;
       return this;
     }
     toJSON(meta) {
@@ -19475,11 +19475,11 @@
         this.mapPass.dispose();
       }
     }
-    copy(source) {
-      this.camera = source.camera.clone();
-      this.bias = source.bias;
-      this.radius = source.radius;
-      this.mapSize.copy(source.mapSize);
+    copy(source2) {
+      this.camera = source2.camera.clone();
+      this.bias = source2.bias;
+      this.radius = source2.radius;
+      this.mapSize.copy(source2.mapSize);
       return this;
     }
     clone() {
@@ -19519,9 +19519,9 @@
       }
       super.updateMatrices(light);
     }
-    copy(source) {
-      super.copy(source);
-      this.focus = source.focus;
+    copy(source2) {
+      super.copy(source2);
+      this.focus = source2.focus;
       return this;
     }
   };
@@ -19549,14 +19549,14 @@
     dispose() {
       this.shadow.dispose();
     }
-    copy(source, recursive) {
-      super.copy(source, recursive);
-      this.distance = source.distance;
-      this.angle = source.angle;
-      this.penumbra = source.penumbra;
-      this.decay = source.decay;
-      this.target = source.target.clone();
-      this.shadow = source.shadow.clone();
+    copy(source2, recursive) {
+      super.copy(source2, recursive);
+      this.distance = source2.distance;
+      this.angle = source2.angle;
+      this.penumbra = source2.penumbra;
+      this.decay = source2.decay;
+      this.target = source2.target.clone();
+      this.shadow = source2.shadow.clone();
       return this;
     }
   };
@@ -19632,11 +19632,11 @@
     dispose() {
       this.shadow.dispose();
     }
-    copy(source, recursive) {
-      super.copy(source, recursive);
-      this.distance = source.distance;
-      this.decay = source.decay;
-      this.shadow = source.shadow.clone();
+    copy(source2, recursive) {
+      super.copy(source2, recursive);
+      this.distance = source2.distance;
+      this.decay = source2.decay;
+      this.shadow = source2.shadow.clone();
       return this;
     }
   };
@@ -19659,10 +19659,10 @@
     dispose() {
       this.shadow.dispose();
     }
-    copy(source) {
-      super.copy(source);
-      this.target = source.target.clone();
-      this.shadow = source.shadow.clone();
+    copy(source2) {
+      super.copy(source2);
+      this.target = source2.target.clone();
+      this.shadow = source2.shadow.clone();
       return this;
     }
   };
@@ -19922,9 +19922,9 @@
       buffer[offset] = this.targetObject[this.propertyName];
     }
     _getValue_array(buffer, offset) {
-      const source = this.resolvedProperty;
-      for (let i = 0, n = source.length; i !== n; ++i) {
-        buffer[offset++] = source[i];
+      const source2 = this.resolvedProperty;
+      for (let i = 0, n = source2.length; i !== n; ++i) {
+        buffer[offset++] = source2[i];
       }
     }
     _getValue_arrayElement(buffer, offset) {
@@ -21506,10 +21506,10 @@
         return null;
       }
       const extension = textureDef.extensions[name];
-      const source = json.images[extension.source];
+      const source2 = json.images[extension.source];
       let loader = parser.textureLoader;
-      if (source.uri) {
-        const handler = parser.options.manager.getHandler(source.uri);
+      if (source2.uri) {
+        const handler = parser.options.manager.getHandler(source2.uri);
         if (handler !== null)
           loader = handler;
       }
@@ -21559,15 +21559,15 @@
           const byteLength = extensionDef.byteLength || 0;
           const count2 = extensionDef.count;
           const stride = extensionDef.byteStride;
-          const source = new Uint8Array(res, byteOffset, byteLength);
+          const source2 = new Uint8Array(res, byteOffset, byteLength);
           if (decoder.decodeGltfBufferAsync) {
-            return decoder.decodeGltfBufferAsync(count2, stride, source, extensionDef.mode, extensionDef.filter).then(function(res2) {
+            return decoder.decodeGltfBufferAsync(count2, stride, source2, extensionDef.mode, extensionDef.filter).then(function(res2) {
               return res2.buffer;
             });
           } else {
             return decoder.ready.then(function() {
               const result = new ArrayBuffer(count2 * stride);
-              decoder.decodeGltfBuffer(new Uint8Array(result), count2, stride, source, extensionDef.mode, extensionDef.filter);
+              decoder.decodeGltfBuffer(new Uint8Array(result), count2, stride, source2, extensionDef.mode, extensionDef.filter);
               return result;
             });
           }
@@ -25135,15 +25135,15 @@
       }
       return this !== child ? _addToTimeline(this, child, position) : this;
     };
-    _proto2.getChildren = function getChildren(nested, tweens, timelines, ignoreBeforeTime) {
+    _proto2.getChildren = function getChildren(nested, tweens, timelines2, ignoreBeforeTime) {
       if (nested === void 0) {
         nested = true;
       }
       if (tweens === void 0) {
         tweens = true;
       }
-      if (timelines === void 0) {
-        timelines = true;
+      if (timelines2 === void 0) {
+        timelines2 = true;
       }
       if (ignoreBeforeTime === void 0) {
         ignoreBeforeTime = -_bigNum;
@@ -25154,8 +25154,8 @@
           if (child instanceof Tween) {
             tweens && a.push(child);
           } else {
-            timelines && a.push(child);
-            nested && a.push.apply(a, child.getChildren(true, tweens, timelines));
+            timelines2 && a.push(child);
+            nested && a.push.apply(a, child.getChildren(true, tweens, timelines2));
           }
         }
         child = child._next;
@@ -27364,9 +27364,9 @@
     plugin._props.push(property);
     return pt;
   };
-  var _assign = function _assign2(target, source) {
-    for (var p in source) {
-      target[p] = source[p];
+  var _assign = function _assign2(target, source2) {
+    for (var p in source2) {
+      target[p] = source2[p];
     }
     return target;
   };
@@ -27610,28 +27610,112 @@
   var gsapWithCSS = gsap.registerPlugin(CSSPlugin) || gsap;
   var TweenMaxWithCSS = gsapWithCSS.core.Tween;
 
-  // node_modules/lil-gui/dist/lil-gui.esm.js
-  var INT = {
-    isPrimitive: true,
-    match: (v) => typeof v === "number",
-    fromHexString: (string) => parseInt(string.substring(1), 16),
-    toHexString: (value) => "#" + value.toString(16).padStart(6, 0)
-  };
-  var ARRAY = {
-    isPrimitive: false,
-    match: Array.isArray,
-    fromHexString(string, target, rgbScale = 1) {
-      const int = INT.fromHexString(string);
-      target[0] = (int >> 16 & 255) / 255 * rgbScale;
-      target[1] = (int >> 8 & 255) / 255 * rgbScale;
-      target[2] = (int & 255) / 255 * rgbScale;
-    },
-    toHexString([r, g, b], rgbScale = 1) {
-      rgbScale = 255 / rgbScale;
-      const int = r * rgbScale << 16 ^ g * rgbScale << 8 ^ b * rgbScale << 0;
-      return INT.toHexString(int);
+  // src/audio.js
+  var timelines = [];
+  var source;
+  function connectNodes(source2, gainNode, audioContext2) {
+    source2.connect(gainNode);
+    gainNode.connect(audioContext2.destination);
+  }
+  async function createSource(audioContext2, volume = 0.3) {
+    const response = await fetch("https://fed-nvfc.vercel.app/nfvc_audio.mp3");
+    const audioData = await response.arrayBuffer();
+    const audioBuffer = await audioContext2.decodeAudioData(audioData);
+    source = audioContext2.createBufferSource();
+    source.buffer = audioBuffer;
+    source.loop = true;
+    const gainNode = audioContext2.createGain();
+    gainNode.gain.value = volume;
+    connectNodes(source, gainNode, audioContext2);
+    return source;
+  }
+  async function loadAndPlayAudio(audioContext2, volume = 0.3) {
+    source = await createSource(audioContext2, volume);
+    const gainNode = audioContext2.createGain();
+    gainNode.gain.value = volume;
+    source.connect(gainNode);
+    gainNode.connect(audioContext2.destination);
+    const audiowave = document.getElementById("audiowave");
+    const ctx = audiowave.getContext("2d");
+    const lineHeight = 2;
+    const maxLineHeight = 8;
+    let minLineHeight = 2;
+    const gap = 5;
+    const bufferLength = 5;
+    const soundtoggler2 = document.querySelector(".soundtoggler");
+    audiowave.width = soundtoggler2.clientWidth;
+    audiowave.height = soundtoggler2.clientHeight;
+    let audioPlaying = false;
+    const drawLine = (index, height) => {
+      ctx.beginPath();
+      ctx.lineWidth = lineHeight;
+      ctx.strokeStyle = "#ffffff";
+      ctx.moveTo(index * gap, (audiowave.height - height) / 2);
+      if (!isPlaying) {
+        height = minLineHeight = 2;
+      }
+      ctx.lineTo(index * gap, (audiowave.height - height) / 2 + height);
+      ctx.stroke();
+    };
+    const animateLine = (index) => {
+      const obj = { progress: 0 };
+      const tl = gsapWithCSS.timeline({
+        repeat: -1,
+        yoyo: true,
+        onUpdate: function() {
+          ctx.clearRect(index * gap - 1, 0, lineHeight + 2, audiowave.height);
+          const height = isPlaying ? minLineHeight + (maxLineHeight - minLineHeight) * Math.abs(Math.sin(obj.progress * Math.PI)) : minLineHeight;
+          drawLine(index, height);
+        }
+      });
+      tl.fromTo(
+        obj,
+        { progress: 0 },
+        {
+          duration: 0.5 + Math.random() * 1.5,
+          progress: 1,
+          ease: "power1.inOut"
+        }
+      );
+      return tl;
+    };
+    for (let i = 0; i < bufferLength; i++) {
+      timelines.push(animateLine(i));
     }
-  };
+    audioPlaying = true;
+    audioContext2.resume();
+    return source;
+  }
+  var isPlaying = false;
+  var playBtn = document.getElementById("play-btn");
+  var audioContext = new (window.AudioContext || window.webkitAudioContext)();
+  playBtn.addEventListener("click", async (e) => {
+    e.preventDefault();
+    await loadAndPlayAudio(audioContext);
+    source.start();
+    isPlaying = true;
+    const audiowave = document.getElementById("audiowave");
+    audiowave.style.display = "block";
+  });
+  var soundtoggler = document.querySelector(".soundtoggler");
+  soundtoggler.addEventListener("click", async (e) => {
+    e.preventDefault();
+    if (isPlaying) {
+      isPlaying = false;
+      if (source) {
+        source.stop();
+        source = null;
+      }
+      timelines.forEach((timeline2) => timeline2.pause());
+      soundtoggler.classList.add("is-paused");
+    } else {
+      isPlaying = true;
+      source = await createSource(audioContext, 0.3);
+      source.start();
+      timelines.forEach((timeline2) => timeline2.resume());
+      soundtoggler.classList.remove("is-paused");
+    }
+  });
 
   // src/script.js
   var canvas = document.querySelector("canvas.webgl");
@@ -27871,11 +27955,4 @@
  * @license
  * Copyright 2010-2022 Three.js Authors
  * SPDX-License-Identifier: MIT
- */
-/**
- * lil-gui
- * https://lil-gui.georgealways.com
- * @version 0.17.0
- * @author George Michael Brower
- * @license MIT
  */
