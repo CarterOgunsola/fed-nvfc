@@ -27795,7 +27795,7 @@
   );
   var particleTexture = textureLoader.load("https://fed-nvfc.vercel.app/window_03.png");
   var particlesGeometry = new BufferGeometry();
-  var count = 800;
+  var count = 1500;
   var positions = new Float32Array(count * 3);
   var colors = new Float32Array(count * 3);
   var colorArray = [
