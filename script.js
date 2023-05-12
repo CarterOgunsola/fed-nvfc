@@ -27856,8 +27856,7 @@
   var renderer = new WebGLRenderer({
     canvas,
     alpha: true,
-    antialias: true,
-    powerPreference: "high-performance"
+    antialias: true
   });
   renderer.setClearColor(16777215, 0);
   renderer.setSize(sizes.width, sizes.height);
